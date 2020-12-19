@@ -2,7 +2,6 @@
 var addButton = document.getElementById("add-button");
 var clearCompletedButton = document.getElementById("clear-completed-button")
 var emptyListButton = document.getElementById("empty-button");
-var saveListButton = document.getElementById("save-button");
 
 var toDoEntryBox = document.getElementById("todo-entry-box");
 var toDoList = document.getElementById("todo-list");
@@ -11,7 +10,6 @@ var toDoList = document.getElementById("todo-list");
 addButton.addEventListener("click", addToDoItem);
 clearCompletedButton.addEventListener("click", clearCompletedToDoItems)
 emptyListButton.addEventListener("click", emptyList);
-saveListButton.addEventListener("click", saveList);
 
 // funciones
 
@@ -21,24 +19,28 @@ a la funcion newToDoItem enviandole la info y el current
 state de cumplición(falso)
 */
 function addToDoItem(){
-    //alert("Add button clicked")
+    //alert("Add button clicked");
     
     var itemText = toDoEntryBox.value;
     newToDoItem(itemText, false);
 }
 
 function clearCompletedToDoItems(){
-    alert("Clear done")
+    clearCompletedToDoItems();
+    alert("Clear done");
 }
 
 function emptyList(){
-    alert("The list will be deleted")
+    //alert("The list will be deleted");
+    emptyList();
 }
 
-function saveList(){
-    alert("Saved")
-}
-
+/*
+Agrega el mensaje a la lista.
+Al hacerle doble click a este mensaje, se llama a la
+función toggleToDoItemState el cual lo marca como completado
+o no completado
+*/
 function newToDoItem(itemText, completed) {
     var toDoItem = document.createElement("li");
     var toDoText = document.createTextNode(itemText);
@@ -57,5 +59,24 @@ function toggleToDoItemState() {
         this.classList.remove("completed");
     } else {
         this.classList.add("completed");
+    }
+}
+
+/*
+Agarra los elementos de la lista marcados como completado y
+los elimina
+*/
+function clearCompletedToDoItems() {
+    var completedItems = toDoList.getElementsByClassName("completed");
+
+    while (completedItems.length > 0) {
+        completedItems.item(0).remove();
+    }
+}
+
+function emptyList() {
+    var toDoItems = toDoList.children;
+    while (toDoItems.length > 0) {
+        toDoItems.item(0).remove();
     }
 }

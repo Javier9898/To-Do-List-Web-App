@@ -81,17 +81,15 @@ body {
     justify-content: space-around;
 }
 
-.todo-wrapper #clear-button {
-    background-color: #49B749;
+.todo-wrapper #clear-completed-button {
+    background-color: #e4b32cea;
 }
 
 .todo-wrapper #empty-button {
     background-color: #9B1C20;
 }
 
-.todo-wrapper #save-button {
-    background-color: #49B749;
-}
+
 
 @media only screen and (min-width: 1400px) {
     .todo-wrapper {
